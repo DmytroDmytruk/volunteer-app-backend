@@ -1,6 +1,7 @@
 package com.example.volunteerappbackend.services.impl;
 
 
+import com.example.volunteerappbackend.DTOs.mappers.UserMapper;
 import com.example.volunteerappbackend.DTOs.request.RefreshRequest;
 import com.example.volunteerappbackend.DTOs.request.SignInRequest;
 import com.example.volunteerappbackend.DTOs.request.SignUpRequest;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
     private final JwtService jwtService;
+    private final UserMapper userMapper;
 
     private final AuthenticationManager authenticationManager;
 
@@ -53,11 +56,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var refreshToken = jwtService.generateRefreshToken(user);
         var expiresAt = new Date(System.currentTimeMillis() + accessTokenExpiration);
         tokenRepository.save(new Token(jwt, refreshToken, expiresAt, user, true));
-        return JwtAuthenticationResponse.builder().token(jwt).refreshToken(refreshToken).expiresAt(expiresAt).build();
+        return JwtAuthenticationResponse.builder()
+                .token(jwt)
+                .refreshToken(refreshToken)
+                .expiresAt(expiresAt)
+                .build();
     }
 
     @Override
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
+        Optional<User> user = userRepository.findByUsername(request.getUsername());
+        if(user.isEmpty()) {
+            userRepository.save(userMapper.toEntity(request));
+        }
         return null;
     }
 
