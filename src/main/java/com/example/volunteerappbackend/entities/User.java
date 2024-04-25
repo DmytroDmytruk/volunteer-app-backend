@@ -1,20 +1,18 @@
 package com.example.volunteerappbackend.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Data
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -33,6 +31,23 @@ public class User implements UserDetails {
     private String username;
     @Column(name = "password")
     private String password;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "country")
+    private String country;
+    @Column(name = "birthday")
+    private LocalDate birthDay;
+    @Column(name = "is_verified")
+    private boolean isVerified;
+
+    @Column(name = "passport_data")
+    @Lob
+    private byte[] passportData;
+
+    private byte[] soldierTicket;
+    private byte[] volunteerTicket;
+    private byte[] refugeeTicket;
+
 
 
     @Enumerated(EnumType.STRING)

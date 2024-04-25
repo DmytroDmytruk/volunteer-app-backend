@@ -2,6 +2,7 @@ package com.example.volunteerappbackend.controllers;
 
 import com.example.volunteerappbackend.DTOs.request.RefreshRequest;
 import com.example.volunteerappbackend.DTOs.request.SignInRequest;
+import com.example.volunteerappbackend.DTOs.request.SignUpRequest;
 import com.example.volunteerappbackend.DTOs.response.JwtAuthenticationResponse;
 import com.example.volunteerappbackend.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -12,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public ResponseEntity<JwtAuthenticationResponse> signing(@RequestBody SignInRequest request) {
+    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest request) {
         return ResponseEntity.ok(authenticationService.signIn(request));
     }
 
@@ -27,4 +28,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.refreshToken(request));
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<JwtAuthenticationResponse> signUp(@RequestBody SignUpRequest request) {
+        return ResponseEntity.ok(authenticationService.signUp(request));
+    }
 }

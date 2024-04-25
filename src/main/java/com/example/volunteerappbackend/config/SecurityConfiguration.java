@@ -33,7 +33,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(request -> request.requestMatchers("/auth/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
+                        .requestMatchers("/user/**").hasAnyAuthority("ADMIN", "USER", "VOLUNTEER", "REFUGEE", "SOLDIER")
+                        .requestMatchers("/volutneer/**").hasAnyAuthority("ADMIN", "VOLUNTEER")
+                        .requestMatchers("/refugee/**").hasAnyAuthority("ADMIN", "REFUGEE")
+                        .requestMatchers("/soldier/**").hasAnyAuthority("ADMIN", "SOLDIER")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception -> {
