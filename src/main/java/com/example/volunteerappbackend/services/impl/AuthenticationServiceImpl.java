@@ -52,22 +52,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             }
             tokenRepository.saveAll(activeTokens);
         }
-        var jwt = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        var expiresAt = new Date(System.currentTimeMillis() + accessTokenExpiration);
-        tokenRepository.save(new Token(jwt, refreshToken, expiresAt, user, true));
-        return JwtAuthenticationResponse.builder()
-                .token(jwt)
-                .refreshToken(refreshToken)
-                .expiresAt(expiresAt)
-                .build();
+        return getJwtAuthenticationResponse(user);
     }
 
     @Override
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
         Optional<User> user = userRepository.findByUsername(request.getUsername());
-        if(user.isEmpty()) {
-            userRepository.save(userMapper.toEntity(request));
+        if(user.isEmpty() && validateUser(request)) {
+            User newUser = userRepository.save(userMapper.toEntity(request));
+            return getJwtAuthenticationResponse(newUser);
         }
         return null;
     }
@@ -89,5 +82,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             tokenRepository.delete(token);
             return null;
         }
+    }
+
+    private boolean validateUser(SignUpRequest request) {
+        return true;//Поки що так, а потім можливо знадобиться
+    }
+
+    private JwtAuthenticationResponse getJwtAuthenticationResponse(User newUser) {
+        var jwt = jwtService.generateToken(newUser);
+        var refreshToken = jwtService.generateRefreshToken(newUser);
+        var expiresAt = new Date(System.currentTimeMillis() + accessTokenExpiration);
+        tokenRepository.save(new Token(jwt, refreshToken, expiresAt, newUser, true));
+        return JwtAuthenticationResponse.builder()
+                .token(jwt)
+                .refreshToken(refreshToken)
+                .expiresAt(expiresAt)
+                .build();
     }
 }
