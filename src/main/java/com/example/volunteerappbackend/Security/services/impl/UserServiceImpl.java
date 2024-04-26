@@ -1,8 +1,8 @@
-package com.example.volunteerappbackend.services.impl;
+package com.example.volunteerappbackend.Security.services.impl;
 
 
+import com.example.volunteerappbackend.Security.services.UserService;
 import com.example.volunteerappbackend.repos.UserRepository;
-import com.example.volunteerappbackend.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

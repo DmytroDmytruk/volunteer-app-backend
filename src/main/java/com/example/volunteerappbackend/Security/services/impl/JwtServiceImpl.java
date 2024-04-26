@@ -1,10 +1,10 @@
-package com.example.volunteerappbackend.services.impl;
+package com.example.volunteerappbackend.Security.services.impl;
 
 
+import com.example.volunteerappbackend.Security.exceptions.TokenNotFoundException;
+import com.example.volunteerappbackend.Security.services.JwtService;
 import com.example.volunteerappbackend.entities.Token;
-import com.example.volunteerappbackend.exceptions.TokenNotFoundException;
 import com.example.volunteerappbackend.repos.TokenRepository;
-import com.example.volunteerappbackend.services.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

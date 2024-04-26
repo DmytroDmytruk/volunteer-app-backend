@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.exceptions;
+package com.example.volunteerappbackend.Security.exceptions;
 
 public class RefreshTokenNotFoundException extends RuntimeException {
     public RefreshTokenNotFoundException(String refreshToken) {

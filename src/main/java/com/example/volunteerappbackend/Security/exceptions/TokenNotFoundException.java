@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.exceptions;
+package com.example.volunteerappbackend.Security.exceptions;
 
 public class TokenNotFoundException extends RuntimeException {
     public TokenNotFoundException(String token) {
