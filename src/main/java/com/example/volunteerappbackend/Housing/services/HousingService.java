@@ -1,13 +1,6 @@
 package com.example.volunteerappbackend.Housing.services;
 
-import org.example.demo.DTOs.AdsDTO;
-import org.example.demo.DTOs.ApsDTO;
-import org.example.demo.Entities.Apartment;
-import org.example.demo.Entities.HousingAdvertisement;
-import org.example.demo.Entities.User;
-import org.example.demo.Repos.ApsRepository;
-import org.example.demo.Repos.HousingRepository;
-import org.example.demo.Repos.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
