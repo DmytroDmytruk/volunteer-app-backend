@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.exceptions;
+package com.example.volunteerappbackend.Security.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

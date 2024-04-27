@@ -1,10 +1,10 @@
-package com.example.volunteerappbackend.controllers;
+package com.example.volunteerappbackend.Security;
 
 import com.example.volunteerappbackend.DTOs.request.RefreshRequest;
 import com.example.volunteerappbackend.DTOs.request.SignInRequest;
 import com.example.volunteerappbackend.DTOs.request.SignUpRequest;
 import com.example.volunteerappbackend.DTOs.response.JwtAuthenticationResponse;
-import com.example.volunteerappbackend.services.AuthenticationService;
+import com.example.volunteerappbackend.Security.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

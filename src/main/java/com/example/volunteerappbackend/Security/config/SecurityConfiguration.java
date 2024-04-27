@@ -1,6 +1,6 @@
-package com.example.volunteerappbackend.config;
+package com.example.volunteerappbackend.Security.config;
 
-import com.example.volunteerappbackend.services.UserService;
+import com.example.volunteerappbackend.Security.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
