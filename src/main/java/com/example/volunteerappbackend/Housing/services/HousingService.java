@@ -1,6 +1,8 @@
 package com.example.volunteerappbackend.Housing.services;
 
 
+import com.example.volunteerappbackend.entities.HousingAdvertisement;
+import com.example.volunteerappbackend.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import java.util.List;
 
 @Service
 public class HousingService {
+
     @Autowired
     HousingRepository housingRepository;
     @Autowired
