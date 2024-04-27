@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.DTOs.request;
+package com.example.volunteerappbackend.DTOs.request.Auth;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

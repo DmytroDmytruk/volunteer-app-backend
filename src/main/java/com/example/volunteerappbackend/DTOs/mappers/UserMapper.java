@@ -1,7 +1,7 @@
 package com.example.volunteerappbackend.DTOs.mappers;
 
-import com.example.volunteerappbackend.DTOs.request.SignUpRequest;
-import com.example.volunteerappbackend.entities.User;
+import com.example.volunteerappbackend.DTOs.request.Auth.SignUpRequest;
+import com.example.volunteerappbackend.Database.entities.User;
 import org.modelmapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

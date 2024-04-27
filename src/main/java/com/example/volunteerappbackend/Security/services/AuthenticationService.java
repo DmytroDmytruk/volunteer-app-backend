@@ -1,9 +1,9 @@
 package com.example.volunteerappbackend.Security.services;
 
 
-import com.example.volunteerappbackend.DTOs.request.RefreshRequest;
-import com.example.volunteerappbackend.DTOs.request.SignInRequest;
-import com.example.volunteerappbackend.DTOs.request.SignUpRequest;
+import com.example.volunteerappbackend.DTOs.request.Auth.RefreshRequest;
+import com.example.volunteerappbackend.DTOs.request.Auth.SignInRequest;
+import com.example.volunteerappbackend.DTOs.request.Auth.SignUpRequest;
 import com.example.volunteerappbackend.DTOs.response.JwtAuthenticationResponse;
 
 public interface AuthenticationService {

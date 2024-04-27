@@ -1,32 +1,34 @@
 package com.example.volunteerappbackend.Housing;
 
+import com.example.volunteerappbackend.DTOs.request.Housing.AdvertisementRequest;
+import com.example.volunteerappbackend.Housing.services.HousingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HousingController {
     @Autowired
     private HousingService housingService;
 
-    @GetMapping("/get-all-adverisments")
+    @GetMapping("/get-all-adverisements")
     public void getAllAdvertisments() {
-        return housingService.getAllAds();
+        //return housingService.getAllAds();
     }
 
-    @GetMapping("/get-adverisments")
-    public void getAllAdvertisments() {
-        return housingService.getAllAds();
+    @GetMapping("/get-adverisements")
+    public void getAllAdvertisements() {
+        //return housingService.getAllAds();
     }
 
-    @GetMapping("/get-adverisment-info")
+    @GetMapping("/get-adverisement-info")
     public void getAdvertisment() {
 
     }
 
-    @PostMapping("/add-adverisment")
-    public void addAd(){
-        housingService.addAdvertisment();
+    @PostMapping("/add-adverisement")
+    public void addAdverisment(@RequestHeader(name = HttpHeaders.AUTHORIZATION) String token,
+                               @RequestBody AdvertisementRequest request){
+        housingService.addAdvertisment(request, token);
     }
 }

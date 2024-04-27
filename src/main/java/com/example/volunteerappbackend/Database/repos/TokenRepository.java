@@ -1,8 +1,8 @@
-package com.example.volunteerappbackend.repos;
+package com.example.volunteerappbackend.Database.repos;
 
 
-import com.example.volunteerappbackend.entities.Token;
-import com.example.volunteerappbackend.entities.User;
+import com.example.volunteerappbackend.Database.entities.Token;
+import com.example.volunteerappbackend.Database.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
