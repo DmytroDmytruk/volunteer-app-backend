@@ -3,8 +3,8 @@ package com.example.volunteerappbackend.Security.services.impl;
 
 import com.example.volunteerappbackend.Security.exceptions.TokenNotFoundException;
 import com.example.volunteerappbackend.Security.services.JwtService;
-import com.example.volunteerappbackend.entities.Token;
-import com.example.volunteerappbackend.repos.TokenRepository;
+import com.example.volunteerappbackend.Database.entities.Token;
+import com.example.volunteerappbackend.Database.repos.TokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -92,5 +92,9 @@ public class JwtServiceImpl implements JwtService {
     private Key getSigningKey(String key) {
         byte[] keyBytes = Decoders.BASE64.decode(key);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+    public String getSecretKey(){
+        return this.jwtSigningKey;
     }
 }

@@ -1,8 +1,6 @@
-package com.example.volunteerappbackend.DTOs.request;
+package com.example.volunteerappbackend.DTOs.request.Auth;
 
 import lombok.*;
-
-import java.sql.Date;
 
 @Data
 @Builder

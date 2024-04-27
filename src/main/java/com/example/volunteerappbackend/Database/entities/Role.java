@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.entities;
+package com.example.volunteerappbackend.Database.entities;
 
 public enum Role {
     USER,

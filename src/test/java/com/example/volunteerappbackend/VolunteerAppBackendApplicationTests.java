@@ -1,18 +1,16 @@
 package com.example.volunteerappbackend;
 
 import com.example.volunteerappbackend.DTOs.mappers.UserMapper;
-import com.example.volunteerappbackend.DTOs.request.SignUpRequest;
-import com.example.volunteerappbackend.entities.Role;
-import com.example.volunteerappbackend.entities.User;
+import com.example.volunteerappbackend.DTOs.request.Auth.SignUpRequest;
+import com.example.volunteerappbackend.Database.entities.Role;
+import com.example.volunteerappbackend.Database.entities.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Date;
 
 @SpringBootTest
 class VolunteerAppBackendApplicationTests {

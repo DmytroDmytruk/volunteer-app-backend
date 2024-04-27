@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.entities;
+package com.example.volunteerappbackend.Database.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

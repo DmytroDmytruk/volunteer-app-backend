@@ -1,16 +1,48 @@
 package com.example.volunteerappbackend.Housing.services;
 
 
+import com.example.volunteerappbackend.DTOs.mappers.AdvertisementMapper;
+import com.example.volunteerappbackend.DTOs.request.Housing.AdvertisementRequest;
+import com.example.volunteerappbackend.Database.entities.HousingAdvertisement;
+import com.example.volunteerappbackend.Database.entities.User;
+import com.example.volunteerappbackend.Database.repos.HousingRepository;
+import com.example.volunteerappbackend.Database.repos.UserRepository;
+import com.example.volunteerappbackend.Security.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class HousingService {
     @Autowired
-    HousingRepository housingRepository;
+    private HousingRepository housingRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AdvertisementMapper advertisementMapper;
+    @Autowired
+    private UserService userService;
+
+    public boolean addAdvertisment(AdvertisementRequest request, String token) {
+        String CurrentUsername = userService.getUsername(token);
+        try{
+            User user = userRepository.findByUsername(CurrentUsername).orElse(null);
+            HousingAdvertisement advertisement = advertisementMapper.toEntity(request);
+            advertisement.setUser(user);
+            housingRepository.save(advertisement);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
+    
+    
+    /*
+    
     @Autowired
     ApsRepository apsRepository;
     @Autowired
@@ -116,5 +148,5 @@ public class HousingService {
 
     public void addAppartment(ApsDTO aps) {
         apsRepository.save(convertToEntity(aps));
-    }
+    }*/
 }
