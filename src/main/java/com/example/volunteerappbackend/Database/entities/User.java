@@ -40,13 +40,9 @@ public class User implements UserDetails {
     @Column(name = "is_verified")
     private boolean isVerified;
 
-    @Column(name = "passport_data")
-    @Lob
+    @Column(name = "passport_data", columnDefinition = "LONGBLOB")
+    @Lob()
     private byte[] passportData;
-
-    private byte[] soldierTicket;
-    private byte[] volunteerTicket;
-    private byte[] refugeeTicket;
 
 
 

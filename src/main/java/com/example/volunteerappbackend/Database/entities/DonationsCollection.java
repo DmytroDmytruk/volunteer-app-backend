@@ -3,6 +3,10 @@ package com.example.volunteerappbackend.Database.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -21,6 +25,9 @@ public class DonationsCollection {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "date")
+    private LocalDateTime uploadDate;
+
     @Column(name = "name")
     private String name;
 
@@ -30,17 +37,8 @@ public class DonationsCollection {
     @Column(name = "reference")
     private String reference;
 
-    @Column(name = "goal")
-    private Float goal;
-
-    @Column(name = "currency")
-    private String currency;
-
-    @Column(name = "collected_amount")
-    private Float collectedAmount;
-
-    @Column(name = "photo")
-    private byte[] photo;
+    @OneToMany(mappedBy = "donationCollection", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DonationPhoto> photos;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

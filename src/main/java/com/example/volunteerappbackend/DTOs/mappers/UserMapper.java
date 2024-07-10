@@ -1,6 +1,7 @@
 package com.example.volunteerappbackend.DTOs.mappers;
 
 import com.example.volunteerappbackend.DTOs.request.Auth.SignUpRequest;
+import com.example.volunteerappbackend.Database.entities.Role;
 import com.example.volunteerappbackend.Database.entities.User;
 import org.modelmapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,11 @@ public class UserMapper {
         this.modelMapper.getTypeMap(String.class, LocalDate.class).setProvider(localDateProvider);
     }
 
-    public User toEntity(SignUpRequest request) {
-        return modelMapper.map(request, User.class);
+    public User SignUpRequestToEntity(SignUpRequest request) {
+        User user = modelMapper.map(request, User.class);
+        user.setVerified(false);
+        user.setRole(Role.valueOf(request.getRole()));
+        return user;
     }
 }
 

@@ -1,4 +1,4 @@
-package com.example.volunteerappbackend.DTOs.response;
+package com.example.volunteerappbackend.DTOs.response.Security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

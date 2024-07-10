@@ -18,9 +18,5 @@ public class SignUpRequest {
     private String country;
     private String birthDay;
     private String isVerified;
-
     private byte[] passportData;
-    private byte[] soldierTicket;
-    private byte[] volunteerTicket;
-    private byte[] refugeeTicket;
 }
